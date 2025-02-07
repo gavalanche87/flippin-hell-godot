@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6atrnp3ppxnd" path="res://scenes/trail/trail.tscn" id="4_k0d5t"]
 [ext_resource type="PackedScene" uid="uid://bf3gge5y5rjp3" path="res://scenes/heart/heart.tscn" id="5_j78px"]
 
-[node name="Level_10" instance=ExtResource("1_0dy5l")]
+[node name="Level_2" instance=ExtResource("1_0dy5l")]
 camera_max = Vector2(1577, -637)
 camera_min = Vector2(-125, 3)
 metadata/_edit_vertical_guides_ = [-125.0, -215.0, 1577.0]

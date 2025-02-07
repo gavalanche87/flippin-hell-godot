@@ -7,7 +7,7 @@ class_name Player
 enum PlayerState { IDLE, RUN, JUMP, FALL, HURT }
 
 
-const FALLEN_OFF: float = 200.0
+const FALLEN_OFF_GAP: float = 300.0
 const GRAVITY: float = 690.0/1.5
 const RUN_SPEED: float = 120.0
 const MAX_FALL: float = 400.0
@@ -108,8 +108,19 @@ func _physics_process(delta: float) -> void:
 		
 		
 func fallen_off() -> void:
-	if global_position.y < FALLEN_OFF:
-		return
+	#print("xpos: ", global_position.x)
+	#print("ypos: ", global_position.y)
+	#print(player_cam.limit_top)
+	#print(player_cam.limit_bottom)
+	#print(player_cam.limit_right)
+	#print(player_cam.limit_left)
+	
+	if (global_position.y > player_cam.limit_top - FALLEN_OFF_GAP and
+		global_position.y < player_cam.limit_bottom + FALLEN_OFF_GAP and 
+		global_position.x < player_cam.limit_right + FALLEN_OFF_GAP and
+	 	global_position.x > player_cam.limit_left - FALLEN_OFF_GAP):
+		return 
+	
 	reduce_lives(_lives)
 
 
