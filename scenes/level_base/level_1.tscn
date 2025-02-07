@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dvfgunmgc7k25"]
+[gd_scene load_steps=7 format=4 uid="uid://dvfgunmgc7k25"]
 
 [ext_resource type="PackedScene" uid="uid://bqjm8hktta1lo" path="res://scenes/level_base/level_base.tscn" id="1_0dy5l"]
 [ext_resource type="PackedScene" uid="uid://cmou72bn4a0pa" path="res://scenes/floor_spikes/floor_spikes.tscn" id="2_bwl07"]
+[ext_resource type="PackedScene" uid="uid://dwdyj02aosud1" path="res://scenes/enemies/eagle.tscn" id="3_8xr14"]
 [ext_resource type="PackedScene" uid="uid://iv0gehdgf82q" path="res://scenes/fruit_pickup/fruit_pickup.tscn" id="3_etbn7"]
 [ext_resource type="PackedScene" uid="uid://b6atrnp3ppxnd" path="res://scenes/trail/trail.tscn" id="4_k0d5t"]
 [ext_resource type="PackedScene" uid="uid://bf3gge5y5rjp3" path="res://scenes/heart/heart.tscn" id="5_j78px"]
@@ -19,6 +20,9 @@ tile_map_data = PackedByteArray("AAAAAP//AAABAAgAAAABAP//AAABAAgAAAACAP//AAABAAg
 
 [node name="Player" parent="." index="2"]
 position = Vector2(195, -307)
+
+[node name="Eagle" parent="Enemies" index="0" instance=ExtResource("3_8xr14")]
+position = Vector2(654, -412)
 
 [node name="FloorSpikes1" parent="Dangers" index="0" instance=ExtResource("2_bwl07")]
 position = Vector2(594, -273)

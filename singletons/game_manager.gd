@@ -2,7 +2,7 @@ extends Node
 
 
 const MAIN = preload("res://scenes/main/main.tscn")
-const TOTAL_LEVELS: int = 5
+const TOTAL_LEVELS: int = 10
 
 
 var _level_scenes: Dictionary = {}
