@@ -4,6 +4,7 @@ extends Area2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 
 const GRAVITY: float = 160.0
@@ -45,7 +46,7 @@ func _on_area_entered(_area: Area2D) -> void:
 	SignalManager.on_heart_hit.emit(LIVES)
 	SoundManager.play_clip(sound, SoundManager.SOUND_PICKUP)
 	animation_player.play("collected")
-	#kill_me()
+	set_deferred("monitoring", false)
 	
 
 
