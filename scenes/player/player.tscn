@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6ghcv5d71avl"]
+[gd_scene load_steps=20 format=3 uid="uid://c6ghcv5d71avl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hkw52"]
 [ext_resource type="Texture2D" uid="uid://c5kqy1g5akq7l" path="res://assets/player/Falling (16 x 16)Blue.png" id="2_4xarp"]
@@ -77,21 +77,44 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8wt5"]
-radius = 5.0
-height = 10.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acya8"]
+size = Vector2(3, 4.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m85up"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq2b1"]
+size = Vector2(9.33333, 7.33333)
 
 [sub_resource type="Animation" id="Animation_1lc6t"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8m7sn"]
 resource_name = "invincible"
 length = 0.4
 loop_mode = 1
 step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.049446, 0.527688, 0.729878, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ns7l"]
 _data = {
@@ -99,17 +122,39 @@ _data = {
 "invincible": SubResource("Animation_8m7sn")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8wt5"]
+radius = 5.0
+height = 10.0
+
 [node name="Player" type="CharacterBody2D" groups=["Moveables", "Player"]]
+scale = Vector2(1.5, 1.5)
 collision_layer = 0
 script = ExtResource("1_hkw52")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -6.28319
 sprite_frames = SubResource("SpriteFrames_i80fk")
-animation = &"fall"
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
-shape = SubResource("CapsuleShape2D_j8wt5")
+[node name="DamagerBox" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/DamagerBox"]
+position = Vector2(-0.5, -6)
+shape = SubResource("RectangleShape2D_acya8")
+
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 2.85714)
+rotation = 3.14159
+scale = Vector2(1, 1)
+collision_layer = 2
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+position = Vector2(6.54721e-07, -0.476191)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_yq2b1")
 
 [node name="PlayerCam" parent="." instance=ExtResource("3_cu5nd")]
 
@@ -132,14 +177,6 @@ life_span = 3.0
 bullet_key = 2
 shoot_delay = 0.2
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 20
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_m85up")
-
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -159,6 +196,11 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[node name="ENVCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_j8wt5")
+
+[connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]

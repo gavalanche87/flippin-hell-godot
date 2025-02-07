@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1hqyc404s7cu"]
+[gd_scene load_steps=18 format=3 uid="uid://b1hqyc404s7cu"]
 
 [ext_resource type="PackedScene" uid="uid://dpsot17mi18v8" path="res://scenes/enemy_base/enemy_base.tscn" id="1_dmowg"]
 [ext_resource type="Script" path="res://scenes/enemies/snail.gd" id="2_qhk0l"]
@@ -82,14 +82,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhudf"]
-radius = 8.0
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u6pb"]
+size = Vector2(15.6667, 7.99996)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0myn"]
+size = Vector2(14.9167, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1q1a"]
 size = Vector2(20, 10)
 
 [node name="Snail" instance=ExtResource("1_dmowg")]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_qhk0l")
 speed = 50.0
 
@@ -100,8 +103,14 @@ autoplay = "walk"
 frame_progress = 0.773521
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-6.99999, 1.16667)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_yhudf")
+shape = SubResource("RectangleShape2D_7u6pb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" index="1"]
+position = Vector2(4.66664, 0.791692)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_i0myn")
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(0, 4)

@@ -26,6 +26,7 @@ const HURT_JUMP_VELOCITY: Vector2 = Vector2(0, -130.0)
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var player_cam: Camera2D = $PlayerCam
 @onready var jump_charge_timer: Timer = $JumpChargeTimer
+@onready var damager_box: Area2D = $AnimatedSprite2D/DamagerBox
 
 
 var _state: PlayerState = PlayerState.IDLE
@@ -327,8 +328,12 @@ func increase_lives(numLivesToAdd: int) -> void:
 func go_invincible() -> void:
 	_invincible = true
 	invincible_player.play("invincible")
+	call_deferred("set_damager_box_enabled", false)
 	invincible_timer.start()
 
+func set_damager_box_enabled(enabled: bool) -> void:
+	damager_box.monitoring = enabled
+	damager_box.monitorable = enabled
 
 func apply_hurt_jump() -> void:
 	animated_sprite_2d.play("hurt")
@@ -350,6 +355,7 @@ func apply_hit() -> void:
 
 func _on_invincible_timer_timeout() -> void:
 	_invincible = false
+	call_deferred("set_damager_box_enabled", true)
 	invincible_player.stop()
 
 
