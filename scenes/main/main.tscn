@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvskriwywmjpn"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_kfufb"]
+[ext_resource type="Texture2D" uid="uid://bmr846rkoppu8" path="res://assets/backgrounds/Green.png" id="2_mr616"]
+[ext_resource type="LabelSettings" uid="uid://dgkqd56s23mfw" path="res://assets/LG_pink_96.tres" id="2_v0403"]
+[ext_resource type="AudioStream" uid="uid://fbjfa6mf3y2x" path="res://assets/sound/Farm Frolics.ogg" id="3_fcnbf"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kfufb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mr616")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.0823529, 0.768627)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -11.5
+offset_right = 50.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "FLIPPIN' HELL"
+label_settings = ExtResource("2_v0403")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fcnbf")
+volume_db = -14.0
+autoplay = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5

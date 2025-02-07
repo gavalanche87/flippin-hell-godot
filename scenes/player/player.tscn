@@ -1,0 +1,164 @@
+[gd_scene load_steps=19 format=3 uid="uid://c6ghcv5d71avl"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_hkw52"]
+[ext_resource type="Texture2D" uid="uid://c5kqy1g5akq7l" path="res://assets/player/Falling (16 x 16)Blue.png" id="2_4xarp"]
+[ext_resource type="PackedScene" uid="uid://dgosca26w5vc0" path="res://scenes/player_cam/player_cam.tscn" id="3_cu5nd"]
+[ext_resource type="Texture2D" uid="uid://bnmj8n7fv8u4e" path="res://assets/player/Hurt (16 x 16)Blue.png" id="3_y4xug"]
+[ext_resource type="Texture2D" uid="uid://kbavhdhqd0k5" path="res://assets/player/Standing (16 x 16)Blue.png" id="4_oedf8"]
+[ext_resource type="PackedScene" uid="uid://bmpo1k4g4os6x" path="res://scenes/shooter/shooter.tscn" id="4_p6823"]
+[ext_resource type="Texture2D" uid="uid://bjuxmo4undnfa" path="res://assets/player/Jumping (16 x 16)Blue.png" id="5_3ougb"]
+[ext_resource type="Texture2D" uid="uid://g6mvawk3rwuk" path="res://assets/player/Running (16 x 16)Blue.png" id="6_4je45"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg1lx"]
+atlas = ExtResource("6_4je45")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbm2q"]
+atlas = ExtResource("6_4je45")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc1na"]
+atlas = ExtResource("6_4je45")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fhgh"]
+atlas = ExtResource("6_4je45")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i80fk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4xarp")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y4xug")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oedf8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3ougb")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg1lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbm2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc1na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fhgh")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8wt5"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m85up"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_1lc6t"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8m7sn"]
+resource_name = "invincible"
+length = 0.4
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ns7l"]
+_data = {
+"RESET": SubResource("Animation_1lc6t"),
+"invincible": SubResource("Animation_8m7sn")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Moveables", "Player"]]
+collision_layer = 0
+script = ExtResource("1_hkw52")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i80fk")
+animation = &"fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_j8wt5")
+
+[node name="PlayerCam" parent="." instance=ExtResource("3_cu5nd")]
+
+[node name="DebugLabel" type="Label" parent="."]
+visible = false
+offset_left = 15.0
+offset_top = -7.0
+offset_right = 340.0
+offset_bottom = 354.0
+scale = Vector2(0.160001, 0.160001)
+theme_override_font_sizes/font_size = 64
+text = "sadasd
+asdasdasd
+asd
+asd"
+
+[node name="Shooter" parent="." instance=ExtResource("4_p6823")]
+speed = 200.0
+life_span = 3.0
+bullet_key = 2
+shoot_delay = 0.2
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_m85up")
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="InvinciblePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1ns7l")
+}
+
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="JumpChargeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
