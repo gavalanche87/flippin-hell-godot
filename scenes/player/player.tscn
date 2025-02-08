@@ -147,16 +147,15 @@ shape = SubResource("RectangleShape2D_acya8")
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(0, 2.85714)
 rotation = 3.14159
-scale = Vector2(1, 1)
 collision_layer = 2
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
 position = Vector2(6.54721e-07, -0.476191)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_yq2b1")
 
 [node name="PlayerCam" parent="." instance=ExtResource("3_cu5nd")]
+zoom = Vector2(1.5, 1.5)
 
 [node name="DebugLabel" type="Label" parent="."]
 visible = false
@@ -198,7 +197,6 @@ one_shot = true
 
 [node name="ENVCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_j8wt5")
 
 [connection signal="area_entered" from="AnimatedSprite2D/HitBox" to="." method="_on_hit_box_area_entered"]

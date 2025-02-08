@@ -308,8 +308,8 @@ z_index = -1
 position = Vector2(210, -16)
 
 [node name="ScrollingBg" parent="." instance=ExtResource("14_rnjcu")]
-offset = Vector2(0, 500)
-transform = Transform2D(1, 0, 0, 1, 0, 500)
+offset = Vector2(0, 250)
+transform = Transform2D(1, 0, 0, 1, 0, 250)
 level_number = 4
 
 [node name="Music" type="AudioStreamPlayer" parent="."]

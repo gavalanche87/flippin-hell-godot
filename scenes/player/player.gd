@@ -145,8 +145,6 @@ func get_input() -> void:
 	if Input.is_action_just_pressed("slam") == true and isInAir():
 		animated_sprite_2d.flip_v = true
 		damager_box.position.y = 15
-		velocity.x *= -1
-		velocity.y *= -1
 	
 	if !isInAir():
 		animated_sprite_2d.flip_v = false
