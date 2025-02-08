@@ -27,6 +27,9 @@ position = Vector2(594, -273)
 position = Vector2(15, -516)
 rotation = 4.71239
 
+[node name="ScrollingBg" parent="." index="10"]
+level_number = 2
+
 [node name="Music" parent="." index="11"]
 autoplay = true
 

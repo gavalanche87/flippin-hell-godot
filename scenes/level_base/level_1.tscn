@@ -39,6 +39,9 @@ position = Vector2(594, -272)
 [node name="Checkpoint" parent="." index="9"]
 position = Vector2(1407, -272)
 
+[node name="ScrollingBg" parent="." index="10"]
+level_number = 1
+
 [node name="Music" parent="." index="11"]
 autoplay = true
 

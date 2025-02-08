@@ -108,12 +108,6 @@ func _physics_process(delta: float) -> void:
 		
 		
 func fallen_off() -> void:
-	#print("xpos: ", global_position.x)
-	#print("ypos: ", global_position.y)
-	#print(player_cam.limit_top)
-	#print(player_cam.limit_bottom)
-	#print(player_cam.limit_right)
-	#print(player_cam.limit_left)
 	
 	if (global_position.y > player_cam.limit_top - FALLEN_OFF_GAP and
 		global_position.y < player_cam.limit_bottom + FALLEN_OFF_GAP and 
@@ -147,6 +141,16 @@ func get_input() -> void:
 	
 	if _state == PlayerState.HURT:
 		return
+	
+	if Input.is_action_just_pressed("slam") == true and isInAir():
+		animated_sprite_2d.flip_v = true
+		damager_box.position.y = 15
+		velocity.x *= -1
+		velocity.y *= -1
+	
+	if !isInAir():
+		animated_sprite_2d.flip_v = false
+		damager_box.position.y = 0
 	
 	# If on floor or ceiling
 	if is_on_floor() or is_on_ceiling():
@@ -220,14 +224,9 @@ func get_input() -> void:
 			_gravity_on = false
 			SoundManager.play_clip(sound, SoundManager.SOUND_JUMP)
 	
-	# If on wallw
+	# If on wall
 	if is_on_wall():
 		if Input.is_action_just_pressed("hop") == true:
-			#if last_wall_normal.x > 0:
-				#velocity.x = -JUMP_VELOCITY
-			#else:
-				#velocity.x = JUMP_VELOCITY
-			#velocity.y = 0
 			jump_charge_timer.start()
 			
 		if Input.is_action_just_released("hop") == true:
