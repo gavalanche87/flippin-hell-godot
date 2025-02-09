@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if _can_continue and Input.is_action_just_pressed("jump"):
+	if _can_continue and (Input.is_action_just_pressed("hop") || Input.is_action_just_pressed("jump")):
 		if vb_game_over.visible == true:
 			GameManager.load_main_scene()
 		else:

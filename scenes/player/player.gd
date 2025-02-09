@@ -204,7 +204,6 @@ func get_input() -> void:
 	if is_on_ceiling():
 			
 		if Input.is_action_just_pressed("hop") == true:
-			#velocity.y = JUMP_VELOCITY
 			jump_charge_timer.start()
 		if Input.is_action_just_released("hop") == true:
 			var timeElapsed = jump_charge_timer.wait_time - jump_charge_timer.time_left

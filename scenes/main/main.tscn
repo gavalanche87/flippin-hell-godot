@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvskriwywmjpn"]
+[gd_scene load_steps=7 format=3 uid="uid://cvskriwywmjpn"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_kfufb"]
 [ext_resource type="Texture2D" uid="uid://c6yfbqnwr0glm" path="res://assets/backgrounds/game_background_2/game_background_2.png" id="2_dchgx"]
 [ext_resource type="LabelSettings" uid="uid://dgkqd56s23mfw" path="res://assets/LG_pink_96.tres" id="2_v0403"]
 [ext_resource type="AudioStream" uid="uid://fbjfa6mf3y2x" path="res://assets/sound/Farm Frolics.ogg" id="3_fcnbf"]
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="4_xkylp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pifhi"]
+font = ExtResource("4_xkylp")
+font_size = 32
+outline_size = 5
+outline_color = Color(0.215686, 0.105882, 0.443137, 1)
+shadow_size = 2
+shadow_color = Color(0.309804, 0.337255, 0.54902, 0)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -41,14 +50,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.5
-offset_top = -11.5
-offset_right = 50.5
-offset_bottom = 11.5
+offset_left = -281.0
+offset_top = -125.0
+offset_right = 282.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "FLIPPIN' HELL"
 label_settings = ExtResource("2_v0403")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -482.0
+offset_top = 76.0
+offset_right = 491.0
+offset_bottom = 315.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hit Space to begin
+
+WASD to move
+SHIFT to GRAV JUMP (Chargeable)
+SPACE to ANTI-GRAV jump
+'p' to invert spike (180) (in Mid-Air)"
+label_settings = SubResource("LabelSettings_pifhi")
+horizontal_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fcnbf")

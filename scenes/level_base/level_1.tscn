@@ -24,15 +24,6 @@ position = Vector2(193, -438)
 [node name="Snail" parent="Enemies" index="0" instance=ExtResource("3_m1job")]
 position = Vector2(1164, -413)
 
-[node name="Snail2" parent="Enemies" index="1" instance=ExtResource("3_m1job")]
-position = Vector2(725, -25)
-
-[node name="Snail3" parent="Enemies" index="2" instance=ExtResource("3_m1job")]
-position = Vector2(446, -25)
-
-[node name="Snail4" parent="Enemies" index="3" instance=ExtResource("3_m1job")]
-position = Vector2(120, -26)
-
 [node name="FloorSpikes1" parent="Dangers" index="0" instance=ExtResource("2_bwl07")]
 position = Vector2(599, -400)
 

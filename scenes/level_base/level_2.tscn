@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://dvfgunmgc7k25"]
+[gd_scene load_steps=7 format=4 uid="uid://dvfgunmgc7k25"]
 
 [ext_resource type="PackedScene" uid="uid://bqjm8hktta1lo" path="res://scenes/level_base/level_base.tscn" id="1_0dy5l"]
 [ext_resource type="PackedScene" uid="uid://cmou72bn4a0pa" path="res://scenes/floor_spikes/floor_spikes.tscn" id="2_bwl07"]
 [ext_resource type="PackedScene" uid="uid://iv0gehdgf82q" path="res://scenes/fruit_pickup/fruit_pickup.tscn" id="3_etbn7"]
+[ext_resource type="PackedScene" uid="uid://bnm7cvsa3vhf1" path="res://scenes/enemies/frog.tscn" id="3_yecvg"]
 [ext_resource type="PackedScene" uid="uid://b6atrnp3ppxnd" path="res://scenes/trail/trail.tscn" id="4_k0d5t"]
 [ext_resource type="PackedScene" uid="uid://bf3gge5y5rjp3" path="res://scenes/heart/heart.tscn" id="5_j78px"]
 
@@ -20,8 +21,122 @@ tile_map_data = PackedByteArray("AAAAAP//AAABAAgAAAABAP//AAABAAgAAAACAP//AAABAAg
 [node name="Player" parent="." index="2"]
 position = Vector2(1247, -311)
 
+[node name="Frog" parent="Enemies" index="0" instance=ExtResource("3_yecvg")]
+position = Vector2(174, -283)
+
+[node name="Frog2" parent="Enemies" index="1" instance=ExtResource("3_yecvg")]
+position = Vector2(789, -37)
+
 [node name="FloorSpikes1" parent="Dangers" index="0" instance=ExtResource("2_bwl07")]
 position = Vector2(594, -273)
+
+[node name="FloorSpikes31" parent="Dangers" index="1" instance=ExtResource("2_bwl07")]
+position = Vector2(91, -592)
+
+[node name="FloorSpikes13" parent="Dangers" index="2" instance=ExtResource("2_bwl07")]
+position = Vector2(624, -111)
+rotation = 3.14159
+
+[node name="FloorSpikes14" parent="Dangers" index="3" instance=ExtResource("2_bwl07")]
+position = Vector2(641, -111)
+rotation = 3.14159
+
+[node name="FloorSpikes15" parent="Dangers" index="4" instance=ExtResource("2_bwl07")]
+position = Vector2(658, -111)
+rotation = 3.14159
+
+[node name="FloorSpikes16" parent="Dangers" index="5" instance=ExtResource("2_bwl07")]
+position = Vector2(114, -112)
+rotation = 3.14159
+
+[node name="FloorSpikes17" parent="Dangers" index="6" instance=ExtResource("2_bwl07")]
+position = Vector2(131, -112)
+rotation = 3.14159
+
+[node name="FloorSpikes18" parent="Dangers" index="7" instance=ExtResource("2_bwl07")]
+position = Vector2(148, -112)
+rotation = 3.14159
+
+[node name="FloorSpikes19" parent="Dangers" index="8" instance=ExtResource("2_bwl07")]
+position = Vector2(134, -432)
+rotation = 3.14159
+
+[node name="FloorSpikes20" parent="Dangers" index="9" instance=ExtResource("2_bwl07")]
+position = Vector2(249, -432)
+rotation = 3.14159
+
+[node name="FloorSpikes21" parent="Dangers" index="10" instance=ExtResource("2_bwl07")]
+position = Vector2(375, -432)
+rotation = 3.14159
+
+[node name="FloorSpikes22" parent="Dangers" index="11" instance=ExtResource("2_bwl07")]
+position = Vector2(862, -432)
+rotation = 3.14159
+
+[node name="FloorSpikes23" parent="Dangers" index="12" instance=ExtResource("2_bwl07")]
+position = Vector2(1087, -432)
+rotation = 3.14159
+
+[node name="FloorSpikes24" parent="Dangers" index="13" instance=ExtResource("2_bwl07")]
+position = Vector2(1169, -512)
+rotation = 1.5708
+
+[node name="FloorSpikes25" parent="Dangers" index="14" instance=ExtResource("2_bwl07")]
+position = Vector2(880, -190)
+rotation = 1.5708
+
+[node name="FloorSpikes26" parent="Dangers" index="15" instance=ExtResource("2_bwl07")]
+position = Vector2(1455, -243)
+rotation = 1.5708
+
+[node name="FloorSpikes27" parent="Dangers" index="16" instance=ExtResource("2_bwl07")]
+position = Vector2(1455, -137)
+rotation = 1.5708
+
+[node name="FloorSpikes28" parent="Dangers" index="17" instance=ExtResource("2_bwl07")]
+position = Vector2(448, -461)
+rotation = 1.5708
+
+[node name="FloorSpikes29" parent="Dangers" index="18" instance=ExtResource("2_bwl07")]
+position = Vector2(448, -567)
+rotation = 1.5708
+
+[node name="FloorSpikes30" parent="Dangers" index="19" instance=ExtResource("2_bwl07")]
+position = Vector2(-17, -197)
+rotation = 4.71239
+
+[node name="FloorSpikes2" parent="Dangers" index="20" instance=ExtResource("2_bwl07")]
+position = Vector2(258, -272)
+
+[node name="FloorSpikes3" parent="Dangers" index="21" instance=ExtResource("2_bwl07")]
+position = Vector2(244, -15)
+
+[node name="FloorSpikes4" parent="Dangers" index="22" instance=ExtResource("2_bwl07")]
+position = Vector2(262, -15)
+
+[node name="FloorSpikes5" parent="Dangers" index="23" instance=ExtResource("2_bwl07")]
+position = Vector2(279, -15)
+
+[node name="FloorSpikes6" parent="Dangers" index="24" instance=ExtResource("2_bwl07")]
+position = Vector2(296, -15)
+
+[node name="FloorSpikes7" parent="Dangers" index="25" instance=ExtResource("2_bwl07")]
+position = Vector2(313, -15)
+
+[node name="FloorSpikes8" parent="Dangers" index="26" instance=ExtResource("2_bwl07")]
+position = Vector2(430, -16)
+
+[node name="FloorSpikes9" parent="Dangers" index="27" instance=ExtResource("2_bwl07")]
+position = Vector2(447, -16)
+
+[node name="FloorSpikes10" parent="Dangers" index="28" instance=ExtResource("2_bwl07")]
+position = Vector2(464, -16)
+
+[node name="FloorSpikes11" parent="Dangers" index="29" instance=ExtResource("2_bwl07")]
+position = Vector2(481, -16)
+
+[node name="FloorSpikes12" parent="Dangers" index="30" instance=ExtResource("2_bwl07")]
+position = Vector2(498, -16)
 
 [node name="Checkpoint" parent="." index="9"]
 position = Vector2(15, -516)
@@ -38,5 +153,23 @@ autoplay = true
 [node name="FruitPickup3" parent="Pickups" index="0" instance=ExtResource("3_etbn7")]
 position = Vector2(434, -280)
 
+[node name="FruitPickup4" parent="Pickups" index="1" instance=ExtResource("3_etbn7")]
+position = Vector2(363, -28)
+
+[node name="FruitPickup5" parent="Pickups" index="2" instance=ExtResource("3_etbn7")]
+position = Vector2(54, -99)
+
+[node name="FruitPickup6" parent="Pickups" index="3" instance=ExtResource("3_etbn7")]
+position = Vector2(1100, -99)
+
+[node name="FruitPickup7" parent="Pickups" index="4" instance=ExtResource("3_etbn7")]
+position = Vector2(942, -605)
+
+[node name="FruitPickup8" parent="Pickups" index="5" instance=ExtResource("3_etbn7")]
+position = Vector2(64, -416)
+
 [node name="Heart" parent="." index="13" instance=ExtResource("5_j78px")]
 position = Vector2(745, -279)
+
+[node name="Heart2" parent="." index="14" instance=ExtResource("5_j78px")]
+position = Vector2(1414, -104)

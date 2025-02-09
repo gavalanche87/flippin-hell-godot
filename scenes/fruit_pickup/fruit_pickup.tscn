@@ -569,6 +569,7 @@ _data = {
 }
 
 [node name="FruitPickup" type="Area2D"]
+scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_7f08q")
