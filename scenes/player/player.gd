@@ -115,7 +115,8 @@ func fallen_off() -> void:
 	 	global_position.x > player_cam.limit_left - FALLEN_OFF_GAP):
 		return 
 	
-	reduce_lives(_lives)
+	reduce_lives(1)
+	GameManager.reload_current_scene()
 
 
 func update_debug_label() -> void:
